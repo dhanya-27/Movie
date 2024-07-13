@@ -1,0 +1,52 @@
+element.style{
+            background-color:#072d4e;
+        }
+.thumbnail p, .thumbnail h4 {
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            }
+.star-rating {
+            line-height:32px;
+            font-size:1.25em;
+            margin-left:-33px;
+            }
+.star-rating .fa-star{
+        color: yellow;
+        }
+.heart-rating {
+            line-height:32px;
+            font-size:1.25em;
+            margin-left:-33px;
+            }
+.heart-rating .fa-heart{
+        color:yellow;
+        }
+.button {
+          background-color: #4CAF50;
+          border: none;
+          color: white;
+          padding: 10px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 4px;
+          cursor: pointer;
+          margin-left:45px;
+        }
+.button1 {
+          background-color: #4CAF50;
+          border: none;
+          color: white;
+          padding: 12px 30px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: -4px -4px;
+          cursor: pointer;
+          margin-left:4px;
+        }
+
+

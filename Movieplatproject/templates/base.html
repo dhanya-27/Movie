@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+{% csrf_token %}
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>{% block title %}Movies{% endblock title %}</title>
+
+    {% load static %}
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+	<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css' >
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+    <link rel='stylesheet' href='{% static "css/base.css" %}' />
+
+
+</head>
+
+<body style="background-color:aqua">
+	<nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="topNavBar">
+
+                <ul class="nav navbar-nav ">
+                    <li>
+                        <nav class="navbar navbar-dark bg-dark">
+                            <a class="navbar-brand" href="">
+                            <a class="btn btn-warning" href="{% url 'add_movie' %}"><a style="color:#4CAF50" href="/">Movie-Recommender</a></a>
+                            </a>
+                        </nav>
+                        </li>
+                </ul>
+                <ul class="nav navbar-nav ">
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="{% url 'watch' %}">
+                            <span aria-hidden="true"></span>MyList
+                        </a>
+                    </li>
+                 {% if not request.user.is_authenticated %}
+                    <li>
+                        <a href="{% url 'signUp' %}">
+                            <span aria-hidden="true"></span>SignUp
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'login' %}">
+                            <span aria-hidden="true"></span>Login
+                        </a>
+                    </li>
+                {% else %}
+                    <li>
+                        <a href="{% url 'logout' %}">
+                            <span aria-hidden="true">Logout</span>&nbsp;
+                        </a>
+                    </li>
+                {% endif %}
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+</div>
+    {% block body %}
+    {% endblock %}
+<!--     <nav class="navbar navbar-bottom">-->
+<!--    <footer class="page-footer font-small">-->
+<!--        <hr>-->
+<!--          <div class="text-center center-block">-->
+<!--            <br />-->
+<!--                <a href="https://www.linkedin.com/in/rajaprerak/" target="_blank"><i class="fa fa-linkedin-square fa-3x social" style="color:#fff"></i></a>-->
+<!--                <a href="https://github.com/rajaprerak" target="_blank"><i id="social-git"class="fa fa-github-square fa-3x" style="color:#fff"></i></a>-->
+<!--        </div>-->
+<!--        <div class="footer-copyright text-center py-3">© 2020-->
+<!--        <a href="http://rajaprerak.github.io/" style="color:#fff"> Prerak Raja</a>-->
+<!--    </div>-->
+
+<!--    </footer>-->
+<!--    </nav>-->
+	<script type="text/javascript" src="{%static 'js/jquery.min.js'%}">
+	</script>
+
+	<script type="text/javascript" src="{%static 'js/bootstrap.min.js'%}">
+	</script>
+    <script type="text/javascript">
+    var $star_rating = $('.star-rating .fa');
+
+    var SetRatingStar = function() {
+        return $star_rating.each(function() {
+        if (parseInt($star_rating.siblings('input.rating-value').val()) >= parseInt($(this).data('rating'))) {
+            return $(this).removeClass('fa-star-o').addClass('fa-star');
+        } else {
+        return $(this).removeClass('fa-star').addClass('fa-star-o');
+        }
+        });
+        };
+
+    $star_rating.on('click', function() {
+    $star_rating.siblings('input.rating-value').val($(this).data('rating'));
+    return SetRatingStar();
+    });
+
+    SetRatingStar();
+    $(document).ready(function() {
+
+    });
+
+</script>
+<script type="text/javascript">
+    function validateForm(){
+    var x = document.forms["ratingForm"]["rating"].value;
+    if(x=="0"){
+        alert("Invalid Input");
+        return false;
+    }
+    }
+</script>
+
+
+
+</body>
+</html>
